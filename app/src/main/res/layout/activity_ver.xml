@@ -39,6 +39,7 @@
         android:layout_marginStart="28dp"
         android:layout_marginTop="152dp"
         android:ems="10"
+        android:fontFamily="@font/actor"
         android:hint="0-11"
         android:inputType="number"
         android:labelFor="@id/viewAsistencias"
@@ -87,6 +88,7 @@
         android:layout_height="48dp"
         android:layout_marginStart="24dp"
         android:ems="10"
+        android:fontFamily="sans-serif"
         android:hint="Clases que se veran en el año"
         android:inputType="number"
         android:labelFor="@id/viewClases"
@@ -139,6 +141,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="504dp"
         android:clickable="true"
+        android:tint="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.264"
         app:layout_constraintStart_toStartOf="parent"
@@ -156,4 +159,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_delete_24" />
+
+    <EditText
+        android:id="@+id/txtNumero"
+        android:layout_width="106dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="300dp"
+        android:ems="10"
+        android:fontFamily="@font/actor"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

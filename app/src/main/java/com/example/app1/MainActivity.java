@@ -33,8 +33,9 @@ public class MainActivity extends AppCompatActivity {
         btnVer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(MainActivity.this, ListarActivity.class);
-                intent.putExtra("op",0);
+                Intent intent = new Intent(MainActivity.this, ListarActivity.class);
+                //llamo a listar para ver los cursos y editarlos
+                intent.putExtra("op",1);
                 startActivity(intent);
 
             }
@@ -44,7 +45,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(MainActivity.this, ListarActivity.class);
-                intent.putExtra("op",1);
+                //llamo a listar para elegir y registyrar asistencia
+                intent.putExtra("op",0);
                 startActivity(intent);
             }
         });

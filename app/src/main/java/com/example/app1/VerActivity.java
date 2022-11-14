@@ -18,7 +18,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class VerActivity extends AppCompatActivity {
 
-    EditText txtMateria,txtClases,txtGrado,txtAcceso;
+    EditText txtMateria,txtClases,txtGrado,txtNumero;
     Button btnGuardar;
 
     FloatingActionButton fabEditar,fabBorrar,fabListarEstudiantes;
@@ -33,6 +33,7 @@ public class VerActivity extends AppCompatActivity {
         txtMateria=findViewById(R.id.txtMateri);
         txtClases=findViewById(R.id.txtClase);
         txtGrado=findViewById(R.id.txtGrad);
+        txtNumero=findViewById(R.id.txtNumero);
         btnGuardar=findViewById(R.id.btnGuardar);
         //Espacio para lo de estudiantes
 
@@ -60,18 +61,23 @@ public class VerActivity extends AppCompatActivity {
             txtMateria.setText(curso.getMateria());
             txtClases.setText(String.valueOf(curso.getNumClases()));
             txtGrado.setText(curso.getGrado());
+            txtNumero.setText(String.valueOf(curso.getNumEstudiantes()));
             txtMateria.setInputType(InputType.TYPE_NULL);
             txtClases.setInputType(InputType.TYPE_NULL);
             txtGrado.setInputType(InputType.TYPE_NULL);
+            txtNumero.setInputType(InputType.TYPE_NULL);
 
         }
         btnGuardar.setVisibility(View.INVISIBLE);
         fabEditar.setOnClickListener(new View.OnClickListener() {
+
+
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(VerActivity.this,EditarActivity.class);
                 i.putExtra("id",id);
                 startActivity(i);
+
             }
         });
         fabListarEstudiantes.setOnClickListener(new View.OnClickListener() {

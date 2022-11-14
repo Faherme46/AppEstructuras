@@ -70,7 +70,7 @@ public class DbCurso extends DbHelperCursos {
                 curso.setAcceso(cursor.getString(3));
                 curso.setNumEstudiantes(cursor.getInt(4));
                 curso.setNumClases(cursor.getInt(5));
-                curso.setClasesDictadas(cursor.getInt(6));
+                curso.setClasesRegistradas(cursor.getInt(6));
 
                 listaCursos.add(curso);
 
@@ -99,7 +99,7 @@ public class DbCurso extends DbHelperCursos {
             curso.setAcceso(cursor.getString(3));
             curso.setNumEstudiantes(cursor.getInt(4));
             curso.setNumClases(cursor.getInt(5));
-            curso.setClasesDictadas(cursor.getInt(6));}
+            curso.setClasesRegistradas(cursor.getInt(6));}
         cursor.close();
         return curso;
 
@@ -107,8 +107,7 @@ public class DbCurso extends DbHelperCursos {
     }
 
 
-    public boolean editarCurso(int id, String materia, String Grado, int numClases,
-                               String accesoTablaEstudiantes, int nEstudiantes, int dictadas){
+    public boolean editarCurso(Curso c){
 
         boolean correcto=false;
 
@@ -116,7 +115,7 @@ public class DbCurso extends DbHelperCursos {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         try {
-            db.execSQL("UPDATE "+Tabla_Cursos+" SET materia ='"+materia+"', grado= '"+String.valueOf(Grado)+"', accesoTabla = '"+accesoTablaEstudiantes+"' , nEstudiantes='"+nEstudiantes+"',nClases= '"+numClases+"', clasesDictadas= '"+dictadas+"' WHERE id= '"+id+"' ");
+            db.execSQL("UPDATE "+Tabla_Cursos+" SET materia ='"+c.getMateria()+"', grado= '"+String.valueOf(c.getGrado())+"', accesoTabla = '"+c.getAcceso()+"' , nEstudiantes='"+c.getNumEstudiantes()+"',nClases= '"+c.getNumClases()+"', clasesDictadas= '"+c.getClasesRegistradas()+"' WHERE id= '"+c.getId()+"' ");
             correcto=true;
             }
         catch (Exception x){
