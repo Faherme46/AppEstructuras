@@ -3,6 +3,7 @@ package com.example.app1.adaptadores;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -17,15 +18,11 @@ import java.util.ArrayList;
 public class ListaEstudiantesAdapter extends RecyclerView.Adapter<ListaEstudiantesAdapter.EstudianteViewHolder> {
 
 
-    public ArrayList<Estudiante> listaEstudiantes;
-    private ArrayList<Estudiante> estudiantes;
-
-
+    ArrayList<Estudiante> listaEstudiantes;
     int value;
 
     public ListaEstudiantesAdapter(ArrayList<Estudiante> listaEstudiantes, int value){
         this.listaEstudiantes =listaEstudiantes;
-
         this.value=value;
     }
     @NonNull
@@ -46,20 +43,12 @@ public class ListaEstudiantesAdapter extends RecyclerView.Adapter<ListaEstudiant
     @Override
     public void onBindViewHolder(@NonNull EstudianteViewHolder holder, int position) {
         holder.viewNombre.setText(listaEstudiantes.get(position).getNombre());
-
-
         if (value!=0){
         holder.viewFaltas.setText((String.valueOf(listaEstudiantes.get(position).getFaltas())));
-        holder.viewAsistencias.setText(String.valueOf(listaEstudiantes.get(position).getAsistencias()));
-        }else{
-            holder.viewId.setText(String.valueOf(listaEstudiantes.get(position).getId()));
-        }
+        holder.viewAsistencias.setText(String.valueOf(listaEstudiantes.get(position).getAsistencias()));}
         if (listaEstudiantes.size()==0){
             holder.viewNombre.setText("No hay estudiantes para mostrar");
         };
-
-        setEstudiantes(holder.returnEstudiantes());
-
     }
 
     @Override
@@ -69,66 +58,29 @@ public class ListaEstudiantesAdapter extends RecyclerView.Adapter<ListaEstudiant
 
     }
 
-    public ArrayList<Estudiante> getEstudiantes() {
-        return estudiantes;
-    }public void setEstudiantes(ArrayList<Estudiante> estudiantes) {
-        this.estudiantes = estudiantes;
-    }
-
-
     public class EstudianteViewHolder extends RecyclerView.ViewHolder {
-        TextView viewNombre, viewAsistencias, viewFaltas, viewId;
+        TextView viewNombre, viewAsistencias, viewFaltas;
         RadioGroup group;
-
-
-
+        RadioButton falta,retraso,excusa;
 
         public EstudianteViewHolder(@NonNull View itemView) {
             super(itemView);
 
             viewFaltas =itemView.findViewById(R.id.viewFaltas);
-            viewId=itemView.findViewById(R.id.textviewId);
             viewAsistencias =itemView.findViewById(R.id.viewAsistencias);
             viewNombre =itemView.findViewById(R.id.viewNombre);
-            if (value==0) {
-                group = itemView.findViewById(R.id.group);
+            group=itemView.findViewById(R.id.group);
+            falta=itemView.findViewById(R.id.radioFalta);
+            retraso=itemView.findViewById(R.id.radioRetraso);
+            excusa=itemView.findViewById(R.id.radioExcusa);
 
-                group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(RadioGroup radioGroup, int i) {
-
-
-                        int id = Integer.parseInt((String) viewId.getText());
-                        Estudiante e = listaEstudiantes.get(id - 1);
-                        switch (i) {
-                            case 2131362152:
-                                e.setFaltas(e.getFaltas() + 1);
-                                e.setChanged(1);
-                                break;
-                            case 2131362153:
-                                e.setRetrasos(e.getRetrasos() + 1);
-                                e.setChanged(1);
-                                break;
-                            case 2131362151:
-                                e.setChanged(1);
-                                e.setExcusas(e.getExcusas() + 1);
-                                break;
-                        }
-                        listaEstudiantes.set(id - 1, e);
-                    }
-                });
-            }
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    //para ver cada estudiant
+                    //para ver cada estudiante
 
                 }
             });
         }
-        public ArrayList<Estudiante> returnEstudiantes(){
-            return listaEstudiantes;
-        }
-
     }
 }
