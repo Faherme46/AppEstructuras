@@ -158,7 +158,7 @@ public class CrearActivity extends AppCompatActivity{
 
 
             if (db!=null){
-                Toast.makeText(CrearActivity.this, "Base de Datos Creada", Toast.LENGTH_SHORT).show();
+                Toast.makeText(CrearActivity.this, "Estudiantes Cargados", Toast.LENGTH_SHORT).show();
                 for (int i = 0; i < arr.size(); i++) {
                     long l= d.insertarEstudiantes(arr.get(i));
                     if (l<0){

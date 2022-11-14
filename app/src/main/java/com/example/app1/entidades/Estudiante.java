@@ -9,8 +9,10 @@ public class Estudiante {
     private int retrasos;
     private int excusas;
     private String nombre;
+    private  int changed;
 
     public  Estudiante(){
+        this.changed=0;
         this.faltas=0;
         this.asistencias=0;
         this.retrasos=0;
@@ -66,5 +68,9 @@ public class Estudiante {
     }
 
 
-
+    public int getChanged() {
+        return changed;
+    }public void setChanged(int changed) {
+        this.changed = changed;
+    }
 }

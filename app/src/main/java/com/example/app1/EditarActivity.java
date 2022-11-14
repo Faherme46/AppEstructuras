@@ -2,6 +2,7 @@ package com.example.app1;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,9 +15,9 @@ import com.example.app1.entidades.Curso;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class EditarActivity extends AppCompatActivity {
-    EditText txtMateria,txtClases,txtGrado,txtAcceso;
+    EditText txtMateria,txtClases,txtGrado,txtNumero;
     Button btnGuardar;
-    FloatingActionButton fabEditar,fabBorrar;
+    FloatingActionButton fabEditar,fabBorrar,fabListar;
     Curso curso;
 
     boolean correcto=false;
@@ -29,9 +30,11 @@ public class EditarActivity extends AppCompatActivity {
         txtMateria=findViewById(R.id.txtMateri);
         txtClases=findViewById(R.id.txtClase);
         txtGrado=findViewById(R.id.txtGrad);
+        txtNumero=findViewById(R.id.txtNumero);
         btnGuardar=findViewById(R.id.btnGuardar);
         fabEditar=findViewById(R.id.fabEditar);
         fabBorrar=findViewById(R.id.fabBorrar);
+        fabListar=findViewById(R.id.fabListarEstudiantes);
 
 
         //Espacio para lo de estudiantes
@@ -55,14 +58,22 @@ public class EditarActivity extends AppCompatActivity {
             txtMateria.setText(curso.getMateria());
             txtClases.setText(String.valueOf(curso.getNumClases()));
             txtGrado.setText(curso.getGrado());
+            txtNumero.setText(String.valueOf(curso.getNumEstudiantes()));
+            txtNumero.setInputType(InputType.TYPE_NULL);
         }
         fabEditar.setVisibility(View.INVISIBLE);
+        fabListar.setVisibility(View.INVISIBLE);
         fabBorrar.setVisibility(View.INVISIBLE);
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(validar()){
-                    correcto=dbCurso.editarCurso(id,txtMateria.getText().toString(),txtGrado.getText().toString(),Integer.parseInt(txtClases.getText().toString()),"",0,0);
+                    Curso c=new Curso();
+                    c.setId(id);
+                    c.setMateria(txtMateria.getText().toString());
+                    c.setGrado(txtGrado.getText().toString());
+                    c.setNumClases(Integer.parseInt(txtClases.getText().toString()));
+                    correcto=dbCurso.editarCurso(c);
                 }
                 if (correcto){
                     Toast.makeText(EditarActivity.this, "Registro Modificado", Toast.LENGTH_SHORT).show();

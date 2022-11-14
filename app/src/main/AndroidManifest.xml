@@ -15,24 +15,24 @@
         <activity
             android:name=".EstudiantesActivity"
             android:exported="false"
-            android:parentActivityName=".ListarActivity">
+            android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ListarActivity" />
+                android:value=".MainActivity" />
         </activity>
         <activity
             android:name=".VerActivity"
             android:exported="false"
-            android:parentActivityName=".ListarActivity">
+            android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ListarActivity" />
+                android:value=".MainActivity" />
         </activity>
         <activity
             android:name=".ListarActivity"

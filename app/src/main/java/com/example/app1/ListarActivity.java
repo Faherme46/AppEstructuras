@@ -29,8 +29,6 @@ public class ListarActivity extends AppCompatActivity {
 
         listaArrayCursos=dbCurso.mostrarCursos();
         Bundle extras= getIntent().getExtras();
-
-
         ListaCursosAdapter adapter=new ListaCursosAdapter(listaArrayCursos,extras.getInt("op"));
 
 

@@ -7,7 +7,7 @@ public class Curso {
     private String materia;
     private String grado;
     private String acceso;
-    private int clasesDictadas;
+    private int clasesRegistradas;
 
     public int getId() {
         return id;
@@ -45,9 +45,9 @@ public class Curso {
         this.acceso = acceso;
     }
 
-    public int getClasesDictadas() {
-        return clasesDictadas;
-    }  public void setClasesDictadas(int clasesDictadas) {
-        this.clasesDictadas = clasesDictadas;
+    public int getClasesRegistradas() {
+        return clasesRegistradas;
+    }  public void setClasesRegistradas(int clasesRegistradas) {
+        this.clasesRegistradas = clasesRegistradas;
     }
 }

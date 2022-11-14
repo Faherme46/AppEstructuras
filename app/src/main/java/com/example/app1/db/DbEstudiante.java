@@ -80,15 +80,15 @@ public class DbEstudiante extends DbHelperEstudiante {
     }
 
 
-    public boolean editarEstudiante(int id, String nombre, int asistencias,int faltas, int excusas, int retrasos){
+    public boolean editarEstudiante(Estudiante e){
 
         boolean correcto=false;
 
-        DbHelperCursos dbHelper = new DbHelperCursos(context, name, version);
+        DbHelperEstudiante dbHelper = new DbHelperEstudiante(context, name, version);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         try {
-            db.execSQL("UPDATE "+Tabla_Estudiantes+" SET nombre ='"+nombre+"', Asistencias= '"+String.valueOf(asistencias)+"', fallas = '"+faltas+"' , retrasis='"+retrasos+"',excusas= '"+excusas+"',  WHERE id= '"+id+"' ");
+            db.execSQL("UPDATE "+Tabla_Estudiantes+" SET nombre ='"+e.getNombre()+"', Asistencias= '"+e.getAsistencias()+"', fallas = '"+e.getFaltas()+"' , retrasos='"+e.getRetrasos()+"',excusas= '"+e.getExcusas()+"'  WHERE id= '"+e.getId()+"' ");
             correcto=true;
         }
         catch (Exception x){
