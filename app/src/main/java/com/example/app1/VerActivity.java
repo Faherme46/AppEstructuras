@@ -35,7 +35,7 @@ public class VerActivity extends AppCompatActivity {
         txtGrado=findViewById(R.id.txtGrad);
         txtNumero=findViewById(R.id.txtNumero);
         btnGuardar=findViewById(R.id.btnGuardar);
-        //Espacio para lo de estudiantes
+
 
         fabEditar =findViewById(R.id.fabEditar);
         fabBorrar=findViewById(R.id.fabBorrar);

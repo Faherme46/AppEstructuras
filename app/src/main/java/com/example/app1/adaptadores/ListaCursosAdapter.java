@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.app1.EstudiantesActivity;
+import com.example.app1.InformeActivity;
 import com.example.app1.VerActivity;
 import com.example.app1.R;
 import com.example.app1.entidades.Curso;
@@ -42,6 +43,8 @@ public class ListaCursosAdapter extends RecyclerView.Adapter<ListaCursosAdapter.
         holder.viewGrado.setText(listaCursos.get(position).getGrado());
         if (listaCursos.size()==0){
             holder.viewMateria.setText("No hay cursos para mostrar");
+            holder.viewEstudiantes.setText("");
+            holder.viewGrado.setText("");
         };
     }
 
@@ -70,11 +73,16 @@ public class ListaCursosAdapter extends RecyclerView.Adapter<ListaCursosAdapter.
                         Intent i = new Intent(context, VerActivity.class);
                         i.putExtra("id", listaCursos.get(getAdapterPosition()).getId());
                         context.startActivity(i);
-                    }else{
+                    }else if (value==0){
                         Context context = view.getContext();
                         Intent i = new Intent(context, EstudiantesActivity.class);
                         i.putExtra("acceso", listaCursos.get(getAdapterPosition()).getAcceso());
                         i.putExtra("op",0);
+                        i.putExtra("id", listaCursos.get(getAdapterPosition()).getId());
+                        context.startActivity(i);
+                    } else if (value == 2) {
+                        Context context = view.getContext();
+                        Intent i = new Intent(context, InformeActivity.class);
                         i.putExtra("id", listaCursos.get(getAdapterPosition()).getId());
                         context.startActivity(i);
                     }

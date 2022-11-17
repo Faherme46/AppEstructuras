@@ -6,11 +6,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 
+import java.util.zip.Inflater;
+
 public class MainActivity extends AppCompatActivity {
-    Button btnVer,btnEditar,btnLlenar;
+    Button btnVer,btnEditar,btnLlenar, btnInforme;
 
 
     @Override
@@ -49,6 +53,24 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("op",0);
                 startActivity(intent);
             }
+        });
+
+        //boton de generar informe
+        btnInforme=findViewById(R.id.btnInforme);
+        btnInforme.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+
+                //llama el listado
+                Intent intent=new Intent(MainActivity.this, ListarActivity.class);
+                //llamo a listar para elegir y registyrar asistencia
+                intent.putExtra("op",2);
+                startActivity(intent);
+            }
+
+
         });
 
 
