@@ -58,8 +58,9 @@ public class EstudiantesActivity extends AppCompatActivity {
         arrayEstudiantes = dbEstudiante.mostrarEstudiantes();
         Bundle extras = getIntent().getExtras();
 
-
         ListaEstudiantesAdapter adapter = new ListaEstudiantesAdapter(arrayEstudiantes, extras.getInt("op"));
+
+
 
         listaEstudiantes.setAdapter(adapter);
 
@@ -74,7 +75,7 @@ public class EstudiantesActivity extends AppCompatActivity {
             Curso curso=new Curso();
             for (Curso c: dbCurso.mostrarCursos()) {
                 if(c.getId()==extras.getInt("id")){
-
+r
                     viewNumer.setText(String.valueOf(c.getClasesRegistradas()+1));
 
                     curso=c;
