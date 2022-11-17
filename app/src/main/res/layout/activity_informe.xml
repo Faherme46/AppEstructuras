@@ -6,12 +6,42 @@
     android:layout_height="match_parent">
 
 
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:layout_marginTop="364dp"
+        android:fontFamily="@font/actor"
+        android:text="Informe de Clase"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="#000000"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/txtInf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#00FFFFFF"
+        android:fontFamily="@font/actor"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
     <EditText
         android:id="@+id/txtMateri"
         android:layout_width="178dp"
-        android:layout_height="41dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="92dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="55dp"
         android:ems="10"
         android:fontFamily="@font/actor"
         android:inputType="textPersonName"
@@ -22,7 +52,8 @@
         android:textSize="24sp"
         android:typeface="sans"
         app:layout_constraintStart_toEndOf="@+id/viewNombre"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/viewClases"
@@ -59,7 +90,7 @@
         android:id="@+id/viewNombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="65dp"
         android:fontFamily="@font/actor"
         android:text="Clase: "
         android:textColor="#000000"
@@ -67,9 +98,10 @@
         android:textStyle="bold"
         android:typeface="normal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.103"
+        app:layout_constraintHorizontal_bias="0.097"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/viewFaltas"
@@ -85,65 +117,6 @@
         android:typeface="sans"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/viewAsistencias" />
-
-    <RadioGroup
-        android:id="@+id/radioGenero"
-        android:layout_width="267dp"
-        android:layout_height="65dp"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="4dp"
-        android:baselineAligned="false"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10">
-
-        <RadioButton
-            android:id="@+id/radioHembra"
-            android:layout_width="142dp"
-            android:layout_height="wrap_content"
-            android:buttonTint="#FF0084"
-            android:fontFamily="@font/actor"
-            android:text="Profesora"
-            android:textSize="20sp" />
-
-        <RadioButton
-            android:id="@+id/radioMacho"
-            android:layout_width="105dp"
-            android:layout_height="wrap_content"
-            android:buttonTint="#00D9FF"
-            android:fontFamily="@font/actor"
-            android:text="Profesor"
-            android:textSize="20sp" />
-    </RadioGroup>
-
-    <EditText
-        android:id="@+id/txtNombre"
-        android:layout_width="340dp"
-        android:layout_height="41dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="372dp"
-        android:ems="10"
-        android:fontFamily="@font/actor"
-        android:hint="@string/ingresoNombre"
-        android:inputType="textPersonName"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/actor"
-        android:text="@string/referir"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNombre" />
 
     <TextView
         android:id="@+id/txtEstudiantes"
@@ -184,17 +157,26 @@
         app:layout_constraintStart_toEndOf="@+id/viewClases"
         app:layout_constraintTop_toBottomOf="@+id/txtEstudiantes" />
 
-    <Button
-        android:id="@+id/btnInforme"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabShare"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="548dp"
-        android:fontFamily="@font/actor"
-        android:text="@string/crear"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="52dp"
+        android:clickable="true"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/txtInf"
+        app:srcCompat="@drawable/ic_baseline_share_24" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabCopy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="236dp"
+        android:layout_marginTop="52dp"
+        android:clickable="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtInf"
+        app:srcCompat="@drawable/ic_baseline_content_copy_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

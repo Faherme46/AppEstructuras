@@ -107,11 +107,13 @@ public class ListaEstudiantesAdapter extends RecyclerView.Adapter<ListaEstudiant
                                 break;
                             case 2131362153:
                                 e.setRetrasos(e.getRetrasos() + 1);
+                                e.setAsistencias(e.getAsistencias() + 1);
                                 e.setChanged(1);
                                 break;
                             case 2131362151:
                                 e.setChanged(1);
                                 e.setExcusas(e.getExcusas() + 1);
+                                e.setFaltas(e.getFaltas() + 1);
                                 break;
                         }
                         listaEstudiantes.set(id - 1, e);

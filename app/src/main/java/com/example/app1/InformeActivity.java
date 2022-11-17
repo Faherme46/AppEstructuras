@@ -1,33 +1,45 @@
 package com.example.app1;
 
-import static com.example.app1.entidades.helper.isAlpha;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.app1.db.DbCurso;
+import com.example.app1.db.DbEstudiante;
 import com.example.app1.entidades.Curso;
+import com.example.app1.entidades.Estudiante;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 public class InformeActivity extends AppCompatActivity {
 
-    EditText txtNombre,txtMateria;
+    EditText txtMateria, txtInfo;
     TextView  txtClases, txtGrado, txtNumero;
+    FloatingActionButton fabCopy,fabShare;
 
-    Button btnInforme;
+
     int id=1;
-    Curso curso;
-    RadioGroup radioGroup;
-    RadioButton radioMacho,radioHembra;
+    Curso c;
+    int asistencia=0;
+    int retraso =0;
+    int excusa=0;
+    int faltas=0;
+    String mensaje;
+
+    ArrayList<Estudiante> arrayEstudiantes;
+    DecimalFormat df = new DecimalFormat(".2f");
 
     @SuppressLint({"MissingInflatedId", "WrongViewCast"})
     @Override
@@ -36,16 +48,14 @@ public class InformeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_informe);
 
         txtMateria=findViewById(R.id.txtMateri);
-        txtNombre=findViewById(R.id.txtNombre);
+        txtInfo=findViewById(R.id.txtInf);
+
         txtClases=findViewById(R.id.txtClases);
         txtGrado=findViewById(R.id.txtGrado);
         txtNumero=findViewById(R.id.txtEstudiantes);
-        btnInforme=findViewById(R.id.btnInforme);
 
-        radioGroup=findViewById(R.id.radioGenero);
-        radioHembra=findViewById(R.id.radioHembra);
-        radioMacho=findViewById(R.id.radioMacho);
-
+        fabCopy=findViewById(R.id.fabCopy);
+        fabShare=findViewById(R.id.fabShare);
 
 
         if (savedInstanceState==null){
@@ -61,14 +71,14 @@ public class InformeActivity extends AppCompatActivity {
         }
 
         DbCurso dbCurso= new DbCurso(InformeActivity.this,"Cursos",0);
-        curso=dbCurso.verCurso(id);
+        c =dbCurso.verCurso(id);
 
         //asignacion de valores
-        if (curso!=null){
-            txtMateria.setText(curso.getMateria());
-            txtClases.setText(String.valueOf(curso.getClasesRegistradas()));
-            txtGrado.setText(curso.getGrado());
-            txtNumero.setText(String.valueOf(curso.getNumEstudiantes()));
+        if (c !=null){
+            txtMateria.setText(c.getMateria());
+            txtClases.setText(String.valueOf(c.getClasesRegistradas()));
+            txtGrado.setText(c.getGrado());
+            txtNumero.setText(String.valueOf(c.getNumEstudiantes()));
             txtMateria.setInputType(InputType.TYPE_NULL);
             txtClases.setInputType(InputType.TYPE_NULL);
             txtGrado.setInputType(InputType.TYPE_NULL);
@@ -76,38 +86,53 @@ public class InformeActivity extends AppCompatActivity {
 
         }
 
-        btnInforme.setOnClickListener(new View.OnClickListener() {
+        DbEstudiante dbEstudiante = new DbEstudiante(InformeActivity.this, c.getAcceso(), 0);
+        arrayEstudiantes = dbEstudiante.mostrarEstudiantes();
+
+        for (Estudiante e: arrayEstudiantes) {
+            asistencia +=(int) e.getAsistencias();
+            faltas += e.getFaltas();
+            retraso += e.getRetrasos();
+            excusa += e.getExcusas();
+        }
+        int asistenciasTotales=(int)c.getClasesRegistradas()*c.getNumEstudiantes();
+
+
+
+        float porcentajeAsistencia=(float) asistencia/asistenciasTotales*100;
+        float porcentajeRetraso=(float) retraso/asistencia*100;
+        float porcentajeExcusa=(float) excusa/faltas*100;
+
+
+
+        mensaje= String.format( "En el curso de %s con los estudiantes de %s he dictado %d clases. En estas obtuve una asistencia del %.2f%%. Sin embargo, %.2f%% de ellas fueron con retraso. Del %.2f%% de faltas el %.2f%% fueron excusadas",c.getMateria(),c.getGrado(),c.getClasesRegistradas(),porcentajeAsistencia,porcentajeRetraso,(1-porcentajeAsistencia/100),porcentajeExcusa);
+
+        txtInfo.setText(mensaje);
+
+
+        //Para copiar al portapapeles
+        fabCopy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(validar()){
+                ClipboardManager myClipboard = myClipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+                ClipData myClip;
+                myClip = ClipData.newPlainText("text", txtInfo.getText().toString());
+                myClipboard.setPrimaryClip(myClip);
+                Toast.makeText(InformeActivity.this, "Copiado al Portapapeles", Toast.LENGTH_SHORT).show();
+            }
+        });
 
-                }
+        fabShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent share = new Intent(Intent.ACTION_SEND);
+                share.setType("text/plain");
+                share.putExtra(Intent.EXTRA_TEXT,mensaje);
+                startActivity(Intent.createChooser(share,"Compartir"));
             }
         });
 
 
-
     }
 
-    public boolean validar(){
-        boolean ret=true;
-        try{
-            //validacion de datos vacios
-            if (txtNombre.getText().toString().isEmpty()){
-                txtNombre.setError("Este campo no debe estar vacio");
-                ret=false;
-            }
-            if(radioGroup.getCheckedRadioButtonId()==-1){
-                Toast.makeText(this, "Debe elegir una opcion", Toast.LENGTH_SHORT).show();
-                ret=false;
-            }
-
-        }catch (Exception e){
-
-            return false;
-        }
-
-
-        return ret;
-    }
 }

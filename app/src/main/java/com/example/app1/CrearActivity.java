@@ -95,7 +95,7 @@ public class CrearActivity extends AppCompatActivity{
         });
 
     }
-    //Onclick general
+
 
     public boolean validar(){
         boolean ret=true;
