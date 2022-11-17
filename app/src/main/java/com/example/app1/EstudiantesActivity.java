@@ -75,8 +75,7 @@ public class EstudiantesActivity extends AppCompatActivity {
             for (Curso c: dbCurso.mostrarCursos()) {
                 if(c.getId()==extras.getInt("id")){
 
-                    viewNumer.setText(String.valueOf(c.getClasesRegistradas()+1));                   
-
+                    viewNumer.setText(String.valueOf(c.getClasesRegistradas()+1));
 
                     curso=c;
                 }
