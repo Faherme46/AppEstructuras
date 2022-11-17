@@ -3,7 +3,6 @@ package com.example.app1.adaptadores;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -80,7 +79,9 @@ public class ListaEstudiantesAdapter extends RecyclerView.Adapter<ListaEstudiant
     public class EstudianteViewHolder extends RecyclerView.ViewHolder {
         TextView viewNombre, viewAsistencias, viewFaltas, viewId;
         RadioGroup group;
-        RadioButton rFalta,rExcusa,retraso;
+
+
+
 
         public EstudianteViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -89,15 +90,7 @@ public class ListaEstudiantesAdapter extends RecyclerView.Adapter<ListaEstudiant
             viewId=itemView.findViewById(R.id.textviewId);
             viewAsistencias =itemView.findViewById(R.id.viewAsistencias);
             viewNombre =itemView.findViewById(R.id.viewNombre);
-            retraso=itemView.findViewById(R.id.radioRetraso);
-            rExcusa=itemView.findViewById(R.id.radioExcusa);
-            rFalta=itemView.findViewById(R.id.radioFalta);
-
-
             if (value==0) {
-                final int x=rFalta.getId();
-                final int y=rFalta.getId();
-                final int z=rFalta.getId();
                 group = itemView.findViewById(R.id.group);
 
                 group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -107,21 +100,25 @@ public class ListaEstudiantesAdapter extends RecyclerView.Adapter<ListaEstudiant
 
                         int id = Integer.parseInt((String) viewId.getText());
                         Estudiante e = listaEstudiantes.get(id - 1);
-                        if (i == x) {
-                            e.setFaltas(e.getFaltas() + 1);
-                            e.setChanged(1);
-                        } else if (i == y) {
-                            e.setRetrasos(e.getRetrasos() + 1);
-                            e.setAsistencias(e.getAsistencias());
-                        } else if (i == z){
-                            e.setChanged(1);
-                        e.setExcusas(e.getExcusas() + 1);
+                        switch (i) {
+                            case 2131362152:
+                                e.setFaltas(e.getFaltas() + 1);
+                                e.setChanged(1);
+                                break;
+                            case 2131362153:
+                                e.setRetrasos(e.getRetrasos() + 1);
+                                e.setAsistencias(e.getAsistencias() + 1);
+                                e.setChanged(1);
+                                break;
+                            case 2131362151:
+                                e.setChanged(1);
+                                e.setExcusas(e.getExcusas() + 1);
+                                e.setFaltas(e.getFaltas() + 1);
+                                break;
                         }
                         listaEstudiantes.set(id - 1, e);
-                        }
-
                     }
-                );
+                });
             }
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
