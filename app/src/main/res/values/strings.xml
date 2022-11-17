@@ -1,17 +1,17 @@
 <resources>
-    <string name="app_name">HorarioCheck</string>
+    <string name="app_name">Checking Off</string>
     <string name="txt_btnCrearClase">Crear Curso</string>
     <string name="txt_btnCargar">Cargar Estudiantes</string>
     <string name="txt_btnVer">Ver Cursos</string>
     <string name="txt_bienvenida">Bienvenido!</string>
     <string name="txt_Salida">¿Seguro que desea salir?</string>
-    <string name="numClases">Numero de Clases</string>
+    <string name="numClases">Clases dictadas</string>
     <string name="numEstudiantes">Numero de Estudiantes</string>
     <string name="grado">Grado</string>
 
     <string name="textoObligatorio">Debe ingresar los campos obligatorios</string>
     <string name="aggHorario">Agregar Horario</string>
-    <string name="registroClase">Registrar clase</string>
+    <string name="registroClase">Crear nueva clase</string>
     <string name="materia">Materia</string>
     <string name="llenar_Asistencia">Llenar Asistencias</string>
     <string name="informe">Crear Informe</string>
