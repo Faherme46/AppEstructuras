@@ -15,5 +15,10 @@
     <string name="materia">Materia</string>
     <string name="llenar_Asistencia">Llenar Asistencias</string>
     <string name="informe">Crear Informe</string>
+    <string name="ingresoNombre">Por favor ingrese su nombre</string>
+    <string name="referir">¿Como nos referimos a ti?</string>
+
+    <string name="clasesVistas">Clases vistas:</string>
+    <string name="crear">Crear Informe</string>
 
 </resources>

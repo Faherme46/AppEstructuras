@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <EditText
+        android:id="@+id/txtMateri"
+        android:layout_width="178dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="92dp"
+        android:ems="10"
+        android:fontFamily="@font/actor"
+        android:inputType="textPersonName"
+
+        android:labelFor="@id/viewNombre"
+        android:minHeight="48dp"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:typeface="sans"
+        app:layout_constraintStart_toEndOf="@+id/viewNombre"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/viewClases"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/actor"
+        android:text="@string/clasesVistas"
+        android:textAlignment="textEnd"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:typeface="sans"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewFaltas" />
+
+    <TextView
+        android:id="@+id/viewAsistencias"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/actor"
+        android:text="Salon:"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:typeface="sans"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtMateri" />
+
+    <TextView
+        android:id="@+id/viewNombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
+        android:fontFamily="@font/actor"
+        android:text="Clase: "
+        android:textColor="#000000"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:typeface="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.103"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/viewFaltas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/actor"
+        android:text="Estudiantes:"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:typeface="sans"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewAsistencias" />
+
+    <RadioGroup
+        android:id="@+id/radioGenero"
+        android:layout_width="267dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="4dp"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView10">
+
+        <RadioButton
+            android:id="@+id/radioHembra"
+            android:layout_width="142dp"
+            android:layout_height="wrap_content"
+            android:buttonTint="#FF0084"
+            android:fontFamily="@font/actor"
+            android:text="Profesora"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/radioMacho"
+            android:layout_width="105dp"
+            android:layout_height="wrap_content"
+            android:buttonTint="#00D9FF"
+            android:fontFamily="@font/actor"
+            android:text="Profesor"
+            android:textSize="20sp" />
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/txtNombre"
+        android:layout_width="340dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="372dp"
+        android:ems="10"
+        android:fontFamily="@font/actor"
+        android:hint="@string/ingresoNombre"
+        android:inputType="textPersonName"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/actor"
+        android:text="@string/referir"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtNombre" />
+
+    <TextView
+        android:id="@+id/txtEstudiantes"
+        android:layout_width="wrap_content"
+        android:layout_height="27dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/actor"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:typeface="sans"
+        app:layout_constraintStart_toEndOf="@+id/viewFaltas"
+        app:layout_constraintTop_toBottomOf="@+id/txtGrado" />
+
+    <TextView
+        android:id="@+id/txtGrado"
+        android:layout_width="wrap_content"
+        android:layout_height="27dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="33dp"
+        android:fontFamily="sans-serif"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:typeface="sans"
+        app:layout_constraintStart_toEndOf="@+id/viewAsistencias"
+        app:layout_constraintTop_toBottomOf="@+id/txtMateri" />
+
+    <TextView
+        android:id="@+id/txtClases"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/actor"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:typeface="sans"
+        app:layout_constraintStart_toEndOf="@+id/viewClases"
+        app:layout_constraintTop_toBottomOf="@+id/txtEstudiantes" />
+
+    <Button
+        android:id="@+id/btnInforme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="548dp"
+        android:fontFamily="@font/actor"
+        android:text="@string/crear"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
