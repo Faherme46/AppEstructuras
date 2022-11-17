@@ -3,6 +3,7 @@ package com.example.app1;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,19 +11,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageSwitcher;
 
 import java.util.zip.Inflater;
 
 public class MainActivity extends AppCompatActivity {
-    Button btnVer,btnEditar,btnLlenar, btnInforme;
+    ImageButton btnVer,btnEditar,btnLlenar, btnInforme;
 
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btnEditar=findViewById(R.id.btnCrear);
+        btnEditar=findViewById(R.id.imgCrear);
         btnEditar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -33,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnVer =findViewById(R.id.btnVer);
+        btnVer =findViewById(R.id.imgVer);
         btnVer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -44,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        btnLlenar=findViewById(R.id.btnLlenar);
+        btnLlenar=findViewById(R.id.imgLLenar);
         btnLlenar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //boton de generar informe
-        btnInforme=findViewById(R.id.btnInforme);
+        btnInforme=findViewById(R.id.imgInforme);
         btnInforme.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

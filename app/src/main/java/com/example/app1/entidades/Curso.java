@@ -2,7 +2,7 @@ package com.example.app1.entidades;
 
 import java.io.Serializable;
 
-public class Curso implements Serializable {
+public class Curso {
     private int id;
     private int numClases;
     private int numEstudiantes;
