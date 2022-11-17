@@ -70,13 +70,15 @@ public class ListaCursosAdapter extends RecyclerView.Adapter<ListaCursosAdapter.
                         Intent i = new Intent(context, VerActivity.class);
                         i.putExtra("id", listaCursos.get(getAdapterPosition()).getId());
                         context.startActivity(i);
-                    }else{
+                    }else if (value==0){
                         Context context = view.getContext();
                         Intent i = new Intent(context, EstudiantesActivity.class);
                         i.putExtra("acceso", listaCursos.get(getAdapterPosition()).getAcceso());
                         i.putExtra("op",0);
                         i.putExtra("id", listaCursos.get(getAdapterPosition()).getId());
                         context.startActivity(i);
+                    } else if (value == 2) {
+
                     }
                 }
             });

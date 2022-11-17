@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-    Button btnVer,btnEditar,btnLlenar;
+    Button btnVer,btnEditar,btnLlenar, btnInforme;
 
 
     @Override
@@ -47,6 +47,17 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent=new Intent(MainActivity.this, ListarActivity.class);
                 //llamo a listar para elegir y registyrar asistencia
                 intent.putExtra("op",0);
+                startActivity(intent);
+            }
+        });
+
+        btnInforme=findViewById(R.id.btnInforme);
+        btnInforme.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivity.this, ListarActivity.class);
+                //llamo a listar para elegir y registyrar asistencia
+                intent.putExtra("op",2);
                 startActivity(intent);
             }
         });
